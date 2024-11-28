@@ -37,9 +37,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $nom = null;
 
     /**
-     * @var Collection<int, abonnement>
+     * @var Collection<int, Abonnement>
      */
-    #[ORM\OneToMany(targetEntity: abonnement::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Abonnement::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $abonnement;
 
     public function __construct()
@@ -135,14 +135,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, abonnement>
+     * @return Collection<int, Abonnement>
      */
     public function getAbonnement(): Collection
     {
         return $this->abonnement;
     }
 
-    public function addAbonnement(abonnement $abonnement): static
+    public function addAbonnement(Abonnement $abonnement): static
     {
         if (!$this->abonnement->contains($abonnement)) {
             $this->abonnement->add($abonnement);
@@ -152,7 +152,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeAbonnement(abonnement $abonnement): static
+    public function removeAbonnement(Abonnement $abonnement): static
     {
         if ($this->abonnement->removeElement($abonnement)) {
             // set the owning side to null (unless already changed)

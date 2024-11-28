@@ -37,5 +37,10 @@
         </tbody>
     </table>
 
+    <form action="{{ path('app_abonnement_index') }}" method="get" class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search abonnements..." name="query">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
     <a href="{{ path('app_abonnement_new') }}">Create new</a>
 {% endblock %}
