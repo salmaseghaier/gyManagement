@@ -1,34 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Course{% endblock %}
+{% block title %}Course Details{% endblock %}
 
 {% block body %}
-    <h1>Course</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ course.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ course.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ course.description }}</td>
-            </tr>
-            <tr>
-                <th>Schedule</th>
-                <td>{{ course.schedule ? course.schedule|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_course_index') }}">back to list</a>
-
-    <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
-
-    {{ include('course/_delete_form.html.twig') }}
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2>Course Details</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ course.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ course.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ course.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Schedule</th>
+                        <td>{{ course.schedule ? course.schedule|date('Y-m-d H:i:s') : 'Not Scheduled' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{{ path('app_course_index') }}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to list
+                </a>
+                <div>
+                    <a href="{{ path('app_course_edit', {'id': course.id}) }}" class="btn btn-warning">
+                        <i class="bi bi-pencil"></i> Edit
+                    </a>
+                    {{ include('course/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -18,8 +18,8 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request,
                              UserPasswordHasherInterface $userPasswordHasher,
-                             Security $security,
-                             EntityManagerInterface $entityManager): Response
+                             EntityManagerInterface $entityManager,
+                             Security $security): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -35,13 +35,22 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            $this->loginUser($user, $security);
+            return $this -> redirectToRoute('home');
 
-            return $security->login($user, UserAuthenticator::class, 'main');
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+            'registrationForm' => $form ->createView(),
         ]);
     }
+
+    private function loginUser(User $user, Security $security): void
+    {
+        $token = $security->getToken();
+        if ($token && $token->getUser() === $user) {
+            $security->setToken($token);
+        }
+    }
+
 }
