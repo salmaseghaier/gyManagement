@@ -33,12 +33,14 @@ final class AbonnementController extends AbstractController
             $entityManager->persist($abonnement);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Abonnement created successfully.');
+
             return $this->redirectToRoute('app_abonnement_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('abonnement/new.html.twig', [
             'abonnement' => $abonnement,
-            'form' => $form,
+            'form' => $form -> createView(),
         ]);
     }
 
@@ -59,6 +61,8 @@ final class AbonnementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'Abonnement updated successfully.');
+
             return $this->redirectToRoute('app_abonnement_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -74,6 +78,8 @@ final class AbonnementController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$abonnement->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($abonnement);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Abonnement deleted successfully.');
         }
 
         return $this->redirectToRoute('app_abonnement_index', [], Response::HTTP_SEE_OTHER);

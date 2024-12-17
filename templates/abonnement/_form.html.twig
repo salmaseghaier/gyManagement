@@ -1,4 +1,33 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+<div class="mb-3">
+    {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.price, 'Price', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.price, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.startDate, 'Start Date', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.startDate, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.startDate, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.endDate, 'End Date', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.endDate, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.endDate, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.user, 'User', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.user, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

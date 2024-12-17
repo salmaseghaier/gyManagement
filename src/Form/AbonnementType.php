@@ -25,18 +25,27 @@ class AbonnementType extends AbstractType
                     'Annual' => 'annual',
                 ]
             ])
-            ->add('price', NumberType::class)
+            ->add('price', NumberType::class,[
+                'label' => 'Price',
+                'attr' => [
+                    'placeholder' => 'Enter the subscription price' ,
+                ]
+            ])
             ->add('startDate', DateType::class, [
                 'widget' => 'single_text',
+                'label' => 'Start date',
                 'required' => true,
             ])
             ->add('endDate', DateType::class, [
                 'widget' => 'single_text',
+                'label' => 'End date',
                 'required' => true,
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'email',
+                'label' => 'User',
+                'placeholder' => 'Select a user',
             ])
             ->add('courses', EntityType::class, [
                 'class' => Course::class,
