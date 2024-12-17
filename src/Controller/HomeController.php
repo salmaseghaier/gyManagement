@@ -11,12 +11,17 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(): Response
     {
-        // Fetch recent courses
-        $courses = $em->getRepository(Course::class)->findAll();
-        return $this->render('home/index.html.twig', [
-            'courses' => $courses,
-        ]);
+        if ($this->getUser()){
+            // Logged-in user
+            // Check if the user is an admin
+            if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+                return $this->redirectToRoute('admin_dashboard');
+            }
+            return $this->render('home/index_user.html.twig');
+        }
+        // Not logged in
+        return $this->render('home/index_guest.html.twig');
     }
 }
