@@ -1,9 +1,62 @@
-{# templates/home/index_user.html.twig #}
+{% extends 'base.html.twig' %}
 
-<h1>Welcome {{ app.user.nom }}!</h1>
-<p>You are logged in as a regular user.</p>
+{% block title %}User Dashboard{% endblock %}
 
-<h2>Your Dashboard</h2>
-<p>Here is some personalized content just for you.</p>
+{% block body %}
+    <div class="container">
+        <h1 class="my-4">Welcome, {{ app.user.nom }}!</h1>
+        <p>You are logged in as a regular user. Here's your personalized dashboard.</p>
 
-<!-- Add any user-specific data or features -->
+        <div class="row my-4">
+            <!-- User Profile Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+{#                    <img src="{{ app.user.profilePicture ? asset('uploads/' ~ app.user.profilePicture) : asset('images/default-profile.jpg') }}" class="card-img-top" alt="Profile Picture">#}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ app.user.nom }}</h5>
+                        <p class="card-text"><strong>Email:</strong> {{ app.user.email }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Dashboard Overview -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Your Dashboard</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Recent Activities</h6>
+                        <ul class="list-group">
+                            <!-- Example of recent activities -->
+                            <li class="list-group-item">
+                                <strong>Course Enrolled:</strong> Yoga 101 (Started on {{ 'now'|date('Y-m-d') }})
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Subscription:</strong> Basic Plan (Expires on {{ 'now'|date('Y-m-d') }})
+                            </li>
+                            <!-- Add more dynamic user-specific data -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- User Resources -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5>Recommended Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Based on your activity, here are some resources that might interest you:</p>
+                        <ul class="list-group">
+
+
+                            <!-- Add more dynamic recommendations -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
