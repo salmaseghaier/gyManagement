@@ -3,8 +3,8 @@
 {% block title %}Log in{% endblock %}
 
 {% block body %}
-    <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+    <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+        <div class="card p-4 shadow-lg border-0" style="width: 100%; max-width: 400px;">
             <form method="post" novalidate>
                 {% if error %}
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -20,7 +20,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="h4 mb-4 text-center">Sign In</h1>
+                <h1 class="h4 mb-4 text-center text-primary">Sign In</h1>
 
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email</label>
@@ -34,14 +34,76 @@
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                <button class="btn btn-primary w-100" type="submit">
+                <button class="btn btn-primary w-100 py-2" type="submit">
                     Sign in
                 </button>
             </form>
 
             <div class="mt-3 text-center">
-                <p>Don't have an account? <a href="{{ path('app_register') }}">Register here</a></p>
+                <p class="mb-0">Don't have an account? <a href="{{ path('app_register') }}" class="text-decoration-none text-primary">Register here</a></p>
             </div>
         </div>
     </div>
+
+    <style>
+        /* Body */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Form Card */
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Title */
+        .h4 {
+            font-weight: 600;
+            color: #2d87f0;
+        }
+
+        /* Button */
+        .btn-primary {
+            background-color: #e41e2b;
+            border-color: #e41e2b;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: #c2181d;
+            border-color: #9c1618;
+        }
+
+        /* Input Fields */
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            border-color: #e41e2b;
+            box-shadow: 0 0 0 0.2rem rgba(228, 30, 43, 0.25);
+        }
+
+        /* Alert Styles */
+        .alert {
+            border-radius: 10px;
+        }
+
+        /* Footer Link */
+        .text-primary {
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .text-primary:hover {
+            text-decoration: underline;
+        }
+    </style>
 {% endblock %}

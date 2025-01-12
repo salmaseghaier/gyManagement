@@ -1,13 +1,247 @@
 {# templates/home/index_guest.html.twig #}
 
-<h1>Welcome to Our Website!</h1>
-<p>Explore our features and services.</p>
+{% extends 'base.html.twig' %}
 
-<div>
-    <p><a href="{{ path('app_login') }}">Log In</a> | <a href="{{ path('app_register') }}">Sign Up</a></p>
-</div>
+{% block title %}Welcome to Our Gym{% endblock %}
 
-<h2>Public Content</h2>
-<p>This is some public content visible to everyone.</p>
+{% block body %}
+    <div class="container-fluid px-0">
+        <!-- Hero Section -->
+        <section class="hero d-flex align-items-center justify-content-center text-center">
+            <div class="hero-overlay">
+                <h1 class="hero-title">Transform Your Life with Our Gym</h1>
+                <p class="hero-subtitle">Join today and get access to world-class fitness programs.</p>
+                <div class="cta-buttons">
+                    <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg">Log In</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-outline-light btn-lg">Sign Up</a>
+                </div>
+            </div>
+        </section>
 
-<p>For more features, log in or sign up!</p>
+        <!-- About Section -->
+        <section class="about py-5">
+            <div class="container text-center">
+                <h2 class="section-title">About Us</h2>
+                <p class="lead">We are dedicated to helping you reach your fitness goals with personalized training, top-tier equipment, and a motivating environment.</p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features bg-light py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Our Features</h2>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-person-fill feature-icon"></i>
+                            <h3>Personalized Coaching</h3>
+                            <p>Work with top-tier coaches to achieve your personal fitness goals.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-calendar-check feature-icon"></i>
+                            <h3>Flexible Hours</h3>
+                            <p>Our gym is open at times that suit your schedule.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-heart-fill feature-icon"></i>
+                            <h3>Wellness Programs</h3>
+                            <p>We offer a holistic approach to fitness with wellness programs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials bg-dark text-white py-5">
+            <div class="container">
+                <h2 class="section-title text-center">What Our Members Say</h2>
+                <div class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <blockquote class="blockquote text-center">
+                                <p>"Joining the gym has been life-changing. The staff and equipment are excellent!"</p>
+                                <footer class="blockquote-footer">John Doe</footer>
+                            </blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="blockquote text-center">
+                                <p>"I love the variety of classes available, and the trainers are incredibly supportive."</p>
+                                <footer class="blockquote-footer">Jane Smith</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target=".carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target=".carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer bg-dark text-white py-4">
+            <div class="container text-center">
+                <p>&copy; {{ "now"|date("Y") }} Gym. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+
+        .hero {
+            background-image: url('/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            color: white;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-buttons .btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-buttons .btn-primary {
+            background-color: #e41e2b;
+            border-color: #e41e2b;
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background-color: #c2181d;
+            border-color: #9c1618;
+        }
+
+        .cta-buttons .btn-outline-light {
+            background-color: transparent;
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .cta-buttons .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: #e41e2b;
+            border-color: #e41e2b;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #f4f4f4;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #e41e2b;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #e41e2b;
+            padding: 60px 20px;
+        }
+
+        .testimonials .carousel-item blockquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .testimonials .carousel-item footer {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #333;
+            color: white;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}

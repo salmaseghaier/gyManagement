@@ -1,0 +1,147 @@
+/* General Container */
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('/images/hero-bg.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.cta-buttons .btn {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-primary {
+    background-color: #e41e2b;
+    border-color: #e41e2b;
+}
+
+.cta-buttons .btn-primary:hover {
+    background-color: #c2181d;
+    border-color: #9c1618;
+}
+
+.cta-buttons .btn-outline-light {
+    background-color: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.cta-buttons .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #e41e2b;
+    border-color: #e41e2b;
+}
+
+/* About Section */
+.about {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+}
+
+.feature-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e41e2b;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #6c757d;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #e41e2b;
+    padding: 60px 20px;
+}
+
+.testimonials .carousel-item blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #fff;
+}
+
+.testimonials .carousel-item footer {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: white;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

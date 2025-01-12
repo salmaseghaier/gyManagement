@@ -89,6 +89,7 @@ class Course
     {
         if (!$this->abonnement->contains($abonnement)) {
             $this->abonnement->add($abonnement);
+            $abonnement->addCourse($this); // Ensure bidirectional update
         }
 
         return $this;
@@ -96,7 +97,9 @@ class Course
 
     public function removeAbonnement(Abonnement $abonnement): static
     {
-        $this->abonnement->removeElement($abonnement);
+        if ($this->abonnement->removeElement($abonnement)){
+            $abonnement->removeCourse($this); //Ensure bidirectional update
+        };
 
         return $this;
     }

@@ -48,15 +48,15 @@ class AbonnementType extends AbstractType
                 'placeholder' => 'Select a user',
             ])
             ->add('courses', EntityType::class, [
+                'label' => 'Courses',
                 'class' => Course::class,
-                'choice_label' => 'id',
+                'choice_label' => 'title',
                 'multiple' => true,
-            ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'email',
-            ])
-        ;
+                'expanded' => true,
+                'attr' => [
+                    'class' => 'form-select',
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

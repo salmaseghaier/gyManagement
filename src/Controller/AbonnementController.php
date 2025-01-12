@@ -40,7 +40,7 @@ final class AbonnementController extends AbstractController
 
         return $this->render('abonnement/new.html.twig', [
             'abonnement' => $abonnement,
-            'form' => $form -> createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -68,14 +68,14 @@ final class AbonnementController extends AbstractController
 
         return $this->render('abonnement/edit.html.twig', [
             'abonnement' => $abonnement,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_abonnement_delete', methods: ['POST'])]
     public function delete(Request $request, Abonnement $abonnement, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$abonnement->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$abonnement->getId(), $request->request->get('_token'))) {
             $entityManager->remove($abonnement);
             $entityManager->flush();
 

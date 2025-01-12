@@ -1,11 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Course{% endblock %}
+{% block title %}Create New Course{% endblock %}
 
 {% block body %}
-    <h1>Create new Course</h1>
+    <div class="container mt-4">
+        <h1>Create New Course</h1>
 
-    {{ include('course/_form.html.twig') }}
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="card-title">Course Information</h5>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.title, 'Course Title') }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.description, 'Course Description') }}
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.schedule, 'Course Schedule') }}
+                    {{ form_widget(form.schedule, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Save
+                </button>
+                {{ form_end(form) }}
+            </div>
+        </div>
 
-    <a href="{{ path('app_course_index') }}">back to list</a>
+        <a href="{{ path('app_course_index') }}" class="btn btn-secondary mt-3">
+            <i class="bi bi-arrow-left"></i> Back to list
+        </a>
+    </div>
 {% endblock %}

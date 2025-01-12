@@ -1,0 +1,21 @@
+{# templates/course/my_courses.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}My Courses{% endblock %}
+
+{% block body %}
+    <h1>My Courses</h1>
+    {% if courses is empty %}
+        <p>You are not enrolled in any courses.</p>
+    {% else %}
+        <ul>
+            {% for course in courses %}
+                <li>
+                    <a href="{{ path('app_course_show', {'id': course.id}) }}">{{ course.title }}</a>
+                    <span>{{ course.schedule ? course.schedule|date('Y-m-d H:i:s') : 'Not Scheduled' }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
